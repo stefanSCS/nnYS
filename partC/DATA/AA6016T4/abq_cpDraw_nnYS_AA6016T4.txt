@@ -1,0 +1,63 @@
+
+## input file for abqSymmShell_mains.py  (Abaqus cup-drawing)
+
+## set 'uax' to False for cup drawing simulations 
+uax: False
+## set 'caeOnly' to True if only the *.cae model database file is desired (no sims)
+## set 'caeOnly' to False if simulations are to be run
+#caeOnly: True
+caeOnly: False
+
+## Abaqus specifics: initial increment, max incr, max numb of incr
+dtInitial:1.0e-5
+dtMax:0.001
+maxNInc: 1e+5
+
+## Elasticity parameters: (E,nuPoisson,muG)
+eParam:70000.0,0.33,26200.0
+## Hardening type: a string in ['Swift','Voce'] 
+hLaw: Swift
+## Hardening parameters: (A,B,C)
+hParam: 478.200000000000,0.006800000000,0.289500000000
+
+## thickness(mm) of the metal sheet
+hThick:1.0 
+##blankDiam=Diameter of the disc-shaped blank 
+blankDiam:107.5
+dieOpeningDiam:62.4
+#dieShoulderRad=Radius of the arc between the Die-flange and the Die-wall 
+dieShoulderRad:10
+punchDiam:60
+punchNoseRad:5
+holderClearance:1.04
+frictionCoeff:0.09
+
+## mesh control: multipliers along hoop and radial directions
+##(if the blank diameter is large, one can safely use the default values: 1.0)
+seedScaleC: 1.12
+seedScaleR: 1.15
+
+## contact parameters: contact pressures between Holder, Die, and Punch-Blank  
+pSoft: 1.5,1.0,1.0
+
+
+
+
+## Punch travel (mm) in Steps-3,4
+scaleP: 1.05
+deltaPunch: 3.0
+
+readOdb: 0
+nCPUs: 1
+
+sim: AA6016T4_TUAT_RV8zzz_deg8_FEdata.txt | umatPoly | True 
+
+sim: nb14_NNdataFEA.txt | umatNNYS | True 
+
+sim: nb13_NNdataFEA.txt | umatNNYS | True
+
+
+
+
+
+

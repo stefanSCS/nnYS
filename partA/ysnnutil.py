@@ -522,7 +522,7 @@ def genPointsCvxCheckOpt(nRandom=10**4):
     #nPoints=vu.shape[0]
     return vu    
     
-def HomN_GaussCheck(vf,vG,vH,Nhom):
+def HomN_GaussCheck_old(vf,vG,vH,Nhom):
     ncp=vf.shape[0]
     vyf=vf**(1.0/Nhom)
     vyf=vyf.reshape((ncp,1))
@@ -550,7 +550,32 @@ def HomN_GaussCheck(vf,vG,vH,Nhom):
     KG=(H11s*G1*G1+H22s*G2*G2+H33s*G3*G3+2.0*(H12s*G1*G2+H13s*G1*G3+H23s*G2*G3))/vNorm2
     return  KG
     
-
+def HomN_GaussCheck(vf,vG,vH,Nhom):
+    ncp=vf.shape[0]
+    tt=(vf**(1.0/Nhom)).reshape((ncp,1))
+    vtt=(tt[:,0]/vf[:,0]).reshape((ncp,1))
+    G1=(vtt[:,0]*vG[:,0]).reshape((ncp,1))
+    G2=(vtt[:,0]*vG[:,1]).reshape((ncp,1))
+    G3=(vtt[:,0]*vG[:,2]).reshape((ncp,1))
+    vtt[:,0]*=tt[:,0]
+    H11=(vtt[:,0]*vH[:,0]).reshape((ncp,1))
+    H12=(vtt[:,0]*vH[:,1]).reshape((ncp,1))
+    H13=(vtt[:,0]*vH[:,2]).reshape((ncp,1))
+    H22=(vtt[:,0]*vH[:,3]).reshape((ncp,1))
+    H23=(vtt[:,0]*vH[:,4]).reshape((ncp,1))
+    H33=(vtt[:,0]*vH[:,5]).reshape((ncp,1))
+    H11s=H22*H33-H23*H23
+    H12s=H23*H13-H12*H33
+    H13s=H12*H23-H22*H13
+    H22s=H11*H33-H13*H13
+    H23s=H12*H13-H11*H23
+    H33s=H11*H22-H12*H12
+    #
+    vNorm2=G1**2+G2**2+G3**2
+    vNorm=np.sqrt(vNorm2)
+    G1/=vNorm;G2/=vNorm;G3/=vNorm
+    KG=(H11s*G1*G1+H22s*G2*G2+H33s*G3*G3+2.0*(H12s*G1*G2+H13s*G1*G3+H23s*G2*G3))/vNorm2
+    return  KG
 
 
 

@@ -1,0 +1,2 @@
+Angle | Wall Clock (sec)
+15 | 569

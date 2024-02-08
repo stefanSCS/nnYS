@@ -1,0 +1,59 @@
+
+
+## input file for abqSymmShell_mains.py 
+
+## set 'uax' to True to perform uniaxial tests simulations
+## set 'uax' to False for cup drawing simulations 
+uax: True
+## set 'caeOnly' to True if only the *.cae model database file is desired (no sims)
+## set 'caeOnly' to False if simulations are to be run
+caeOnly: False
+
+
+## Abaqus specifics: max increment, max numb of incr
+dtMax:0.003
+maxNInc:3000
+
+
+## Hardening type: a string in ['Swift','Voce'] 
+hLaw:Swift
+## Elasticity parameters: (E,nuPoisson,muG)
+eParam:70000.0,0.33,26200.0
+## Hardening parameters: (A,B,C)
+hParam: 478.200000000000,0.006800000000,0.289500000000
+
+## for Hill'48 sims must provide additional details
+## R-values required by Hill48: (r0,r45,r90) from experiments 
+rParam:0.526,0.253,0.601
+
+## thickness(mm) of the metal sheet
+hThick:1.0
+
+## HRATIO is used to calculate the boundary displacement (see doc)
+HRATIO:  10.0
+
+##---------- List of tests 
+## Note: the specification of a test has the format (see doc)
+## sim: inputFile | UMAT | PolyN | angles
+
+## one can perform a single test (one material, one angle)
+##for example: with the default Hill48 of Abaqus, at test angle=0.0:
+#sim: AA6022T4_0_HillAbaqus | False | False | 0.0
+
+
+## or several tests (batch testing)
+## for example, run tests with 'umatNNYS' and 'umatPoly'
+
+#sim: nb13_NNdataFEA.txt | umatNNYS | True  | 0.0,15.0,30.0,45.0,60.0,75.0,90.0
+
+sim: nb14_NNdataFEA.txt | umatNNYS | True  | 0.0,15.0,30.0,45.0,60.0,75.0,90.0
+
+##sim: AA6016T4_TUAT_RV8zzz_deg8_FEdata.txt|umatPoly|True| 0.0
+#sim: AA6016T4_TUAT_RV8zzz_deg8_FEdata.txt|umatPoly|True| 0.0,15.0,30.0,45.0,60.0,75.0,90.0
+
+
+
+
+
+
+

@@ -14752,9 +14752,9 @@ _________________________________________________________________
  dense_2 (Dense)             (None, 1)                 201       
                                                                  
 =================================================================
-Total params: 42,201
-Trainable params: 42,201
-Non-trainable params: 0
+Total params: 42201 (164.85 KB)
+Trainable params: 42201 (164.85 KB)
+Non-trainable params: 0 (0.00 Byte)
 _________________________________________________________________
 </pre>
 </div>
@@ -14769,11 +14769,12 @@ _________________________________________________________________
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[67]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-python"><pre><span></span><span class="k">def</span> <span class="nf">modelBdry</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">vParam</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">model</span><span class="p">((</span><span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span><span class="o">-</span><span class="n">cntp</span><span class="p">)</span><span class="o">/</span><span class="n">dxMax</span><span class="p">)</span><span class="o">-</span><span class="mf">0.4</span>
+    <span class="c1">#return model((x.reshape((1,x.shape[0]))-cntp)/dxMax)-0.5</span>
+    <span class="k">return</span> <span class="n">model</span><span class="p">((</span><span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span><span class="o">-</span><span class="n">cntp</span><span class="p">)</span><span class="o">/</span><span class="n">dxMax</span><span class="p">)</span><span class="o">-</span><span class="mf">0.0865</span>
 
 <span class="k">def</span> <span class="nf">modelBdryGrad</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">vParam</span><span class="p">):</span>
     <span class="n">y</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
@@ -14801,7 +14802,7 @@ _________________________________________________________________
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[45]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-python"><pre><span></span><span class="n">degree</span><span class="o">=</span><span class="mi">4</span>
@@ -14842,19 +14843,42 @@ _________________________________________________________________
 <span class="n">data</span> <span class="o">=</span> <span class="p">[</span>  <span class="c1">#### AA2090-T3</span>
 <span class="c1">### uniaxial directional properties (q=0.0)</span>
 <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="s1">'*'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="mf">0.2115</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="s1">'*'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="mf">0.2115</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="s1">'*'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="mf">0.2115</span><span class="p">},</span>
 <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">15.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="mf">0.9605</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="mf">0.3269</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">15.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="mf">0.9605</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="s1">'*'</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">15.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="mf">0.9605</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="s1">'*'</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">15.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="mf">0.9605</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="s1">'*'</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">15.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="mf">0.9605</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="s1">'*'</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">15.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="mf">0.9605</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="s1">'*'</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">15.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="mf">0.9605</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="s1">'*'</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">15.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="mf">0.9605</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="s1">'*'</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">15.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="mf">0.9605</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="s1">'*'</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">15.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="mf">0.9605</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="s1">'*'</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">15.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="mf">0.9605</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="s1">'*'</span><span class="p">},</span>
 <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">30.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="mf">0.9102</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="mf">0.6923</span><span class="p">},</span>
 <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">45.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="mf">0.8114</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="mf">1.5769</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">45.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="mf">0.8114</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="mf">1.5769</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">45.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="mf">0.8114</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="mf">1.5769</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">45.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="s1">'*'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="mf">1.5769</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">45.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="s1">'*'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="mf">1.5769</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">45.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="s1">'*'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="mf">1.5769</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">45.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="s1">'*'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="mf">1.5769</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">45.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="s1">'*'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="mf">1.5769</span><span class="p">},</span>
 <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">60.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="mf">0.8096</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="mf">1.0385</span><span class="p">},</span>
 <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">75.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="mf">0.8815</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="mf">0.5384</span><span class="p">},</span>
 <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">90.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="mf">0.9102</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="mf">0.6923</span><span class="p">},</span>
-
+          <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">90.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="mf">0.9102</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="mf">0.6923</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">90.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="mf">0.9102</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="mf">0.6923</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">90.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="s1">'*'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="mf">0.6923</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="s1">'theta'</span><span class="p">:</span><span class="mf">90.0</span><span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="s1">'*'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="mf">0.6923</span><span class="p">},</span>
+          <span class="c1">#{'q':0.0,'theta':90.0,'s':0.9102, 'r':0.6923},</span>
 <span class="c1">### in-plane biaxial properties</span>
 <span class="c1">##### balanced-biaxial: q=1.0, theta=0.0</span>
 <span class="c1">### reported balanced-biaxial r_b value = 0.6700</span>
 <span class="c1">### use the above formula to get r(q=1,theta=0)=-0.67/1.67</span>
-<span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">1.0</span><span class="p">,</span> <span class="s1">'theta'</span><span class="p">:</span><span class="mf">0.0</span> <span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="mf">1.0350</span> <span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="o">-</span><span class="mf">0.4012</span><span class="p">}</span>
-
+<span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">1.0</span><span class="p">,</span> <span class="s1">'theta'</span><span class="p">:</span><span class="mf">0.0</span> <span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="mf">1.0350</span> <span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="o">-</span><span class="mf">0.4012</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">'q'</span><span class="p">:</span><span class="mf">1.0</span><span class="p">,</span> <span class="s1">'theta'</span><span class="p">:</span><span class="mf">0.0</span> <span class="p">,</span><span class="s1">'s'</span><span class="p">:</span><span class="mf">1.0350</span> <span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span><span class="s1">'*'</span><span class="p">},</span>
 <span class="c1">### add any other data point...</span>
 <span class="p">]</span>
 
@@ -14895,8 +14919,8 @@ _________________________________________________________________
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[-0.34539336 -0.40930011 -1.60247763  1.41619036  3.06051114  0.58494394
- 11.09308196 22.        ]
+<pre>[-0.67794534  1.41654881 -2.35625137  1.4968451   5.0471218  -1.41734905
+  9.25270284 23.51587579]
 </pre>
 </div>
 </div>
@@ -14923,12 +14947,12 @@ _________________________________________________________________
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[68]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-python"><pre><span></span><span class="n">vfParam</span><span class="p">,</span><span class="n">vgParam</span><span class="o">=</span><span class="p">[</span><span class="n">MM</span><span class="p">,</span><span class="n">VV</span><span class="p">],[]</span>
 <span class="n">fMin</span><span class="p">,</span><span class="n">xSol</span><span class="p">,</span><span class="n">minSol</span><span class="o">=</span><span class="n">cvxn</span><span class="o">.</span><span class="n">constrOptim33CD</span><span class="p">(</span><span class="n">xZro</span><span class="p">,</span><span class="n">cntp</span><span class="p">,</span><span class="n">fCostFunc</span><span class="p">,</span><span class="n">fCostGrad</span><span class="p">,</span><span class="n">modelBdry</span><span class="p">,</span><span class="n">modelBdryGrad</span><span class="p">,</span><span class="n">vfParam</span><span class="p">,</span><span class="n">vgParam</span><span class="p">,</span>
-                             <span class="n">dLambda</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span><span class="n">nIter</span><span class="o">=</span><span class="mi">10</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span>
+                             <span class="n">dLambda</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">nIter</span><span class="o">=</span><span class="mi">10</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'minF = '</span><span class="p">,</span><span class="n">fMin</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'xSol = '</span><span class="p">,</span> <span class="n">xSol</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'--------------------Best Sol:'</span><span class="p">)</span>
@@ -14955,78 +14979,19 @@ _________________________________________________________________
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>iter = 100, funcVal = -0.954408856160885, gradNorm = 0.006209345653275165, gA = [[3.4868717e-06]], flagG = True
-x0 = [-0.72058329  1.14106789 -2.13325335  1.59687317  4.25014472 -2.01325438
-  9.98807148 19.35758609]
-iter = 200, funcVal = -0.9592405526965833, gradNorm = 0.004708555926814918, gA = [[5.662441e-07]], flagG = True
-x0 = [-0.61939575  1.0547284  -2.05276862  1.57772904  4.26377113 -2.25328598
- 10.24281572 20.21605031]
-iter = 300, funcVal = -0.9620069900475225, gradNorm = 0.003665953502560184, gA = [[-3.3676624e-06]], flagG = False
-x0 = [-0.53592497  0.95881795 -1.94138776  1.54684103  4.18932628 -2.38951454
- 10.45528085 20.8310299 ]
-iter = 400, funcVal = -0.962336505308094, gradNorm = 0.0035644210718972272, gA = [[2.3841858e-06]], flagG = True
-x0 = [-0.49305804  0.9102845  -1.88737493  1.53685399  4.18693396 -2.57537602
- 10.52342662 20.90535528]
-iter = 500, funcVal = -0.9617765069440284, gradNorm = 0.0046551558186677475, gA = [[1.4901161e-07]], flagG = True
-x0 = [-0.4847363   0.89717954 -1.87072402  1.53244162  4.25193045 -2.77272531
- 10.54041984 20.7576458 ]
-iter = 600, funcVal = -0.9613528402285157, gradNorm = 0.00398160579492467, gA = [[-2.9802322e-07]], flagG = True
-x0 = [-0.47327039  0.88499238 -1.86202119  1.53727661  4.33261157 -2.93676992
- 10.57977693 20.64571505]
-iter = 700, funcVal = -0.9614460572111607, gradNorm = 0.003909149670967569, gA = [[5.662441e-07]], flagG = True
-x0 = [-0.46008986  0.8678565  -1.84126849  1.53142318  4.37795959 -3.06044879
- 10.65046379 20.6593767 ]
-iter = 800, funcVal = -0.9622680390689408, gradNorm = 0.0035237368132504778, gA = [[-2.6524067e-06]], flagG = True
-x0 = [-0.43638102  0.83752609 -1.80166578  1.51634868  4.37330764 -3.13028999
- 10.77493108 20.85454566]
-iter = 900, funcVal = -0.9647483739114429, gradNorm = 0.0028235952531536906, gA = [[1.4901161e-06]], flagG = True
-x0 = [-0.3832574   0.75665648 -1.68166633  1.46706073  4.14927026 -3.06006209
- 11.05692771 21.62411822]
-iter = 1000, funcVal = -0.9651999477252252, gradNorm = 0.0019881264095046617, gA = [[-8.046627e-07]], flagG = True
-x0 = [-0.35275273  0.72580691 -1.63650667  1.45638249  4.02700658 -3.06727182
- 11.12973277 21.79166113]
-iter = 1100, funcVal = -0.9652684260859841, gradNorm = 0.0020086217538759967, gA = [[-1.6093254e-06]], flagG = False
-x0 = [-0.34561444  0.71746111 -1.6224965   1.45070943  3.98609814 -3.0847532
- 11.16192891 21.80786308]
-iter = 1200, funcVal = -0.9650200300322229, gradNorm = 0.0022059280364720873, gA = [[-1.937151e-06]], flagG = True
-x0 = [-0.35089301  0.7221223  -1.63057566  1.45440105  4.00570785 -3.12341616
- 11.14799419 21.68905134]
-iter = 1300, funcVal = -0.9648201733321615, gradNorm = 0.0023424349355625545, gA = [[-2.2947788e-06]], flagG = True
-x0 = [-0.35719525  0.72641475 -1.63780181  1.45699224  4.03662259 -3.15797131
- 11.14283489 21.6021616 ]
-iter = 1400, funcVal = -0.9649507074292958, gradNorm = 0.00217784344063508, gA = [[-1.1920929e-07]], flagG = True
-x0 = [-0.35247158  0.71961703 -1.62795514  1.4537566   4.03254724 -3.1685301
- 11.17863619 21.65244721]
-iter = 1500, funcVal = -0.9650453960053312, gradNorm = 0.002174113561871324, gA = [[-4.4703484e-07]], flagG = False
-x0 = [-0.34819987  0.71350768 -1.61760119  1.44926501  4.01720497 -3.18176838
- 11.20086187 21.69069579]
-iter = 1600, funcVal = -0.9651555440315845, gradNorm = 0.0024463005514731287, gA = [[4.053116e-06]], flagG = True
-x0 = [-0.34351035  0.70793785 -1.60779702  1.44428107  4.00280222 -3.18931089
- 11.22618941 21.73718103]
-iter = 1700, funcVal = -0.9651174732816201, gradNorm = 0.00209300301282267, gA = [[-5.662441e-07]], flagG = True
-x0 = [-0.3401786   0.70532189 -1.60572638  1.44654256  3.99834607 -3.20560251
- 11.22516263 21.7181315 ]
-iter = 1800, funcVal = -0.9650233453272985, gradNorm = 0.0022024208071662783, gA = [[-1.0430813e-06]], flagG = False
-x0 = [-0.34318332  0.70761802 -1.60922003  1.44743773  4.01335323 -3.22378681
- 11.22013374 21.67658824]
-iter = 1900, funcVal = -0.9651112696607335, gradNorm = 0.0020594921580769955, gA = [[-2.413988e-06]], flagG = False
-x0 = [-0.34016912  0.70409092 -1.60439029  1.44570493  4.01754664 -3.22704759
- 11.24489681 21.71379012]
-iter = 2000, funcVal = -0.9649034548074777, gradNorm = 0.0022203690638908855, gA = [[-4.172325e-06]], flagG = True
-x0 = [-0.34455951  0.70891081 -1.61276034  1.44999247  4.04064163 -3.25567299
- 11.21882937 21.62591313]
-iter = 2100, funcVal = -0.9648319435260545, gradNorm = 0.002254123326997966, gA = [[9.23872e-07]], flagG = True
-x0 = [-0.34665199  0.71089903 -1.61619877  1.45102058  4.06156315 -3.27214048
- 11.21838475 21.59712693]
-iter = 2200, funcVal = -0.9648154685624153, gradNorm = 0.0027085547777729218, gA = [[9.536743e-07]], flagG = True
-x0 = [-0.34763038  0.71088003 -1.61456936  1.44840903  4.0670243  -3.28719233
- 11.22066589 21.59183052]
-iter = 2300, funcVal = -0.9648326157578231, gradNorm = 0.002245189824737739, gA = [[-1.0430813e-06]], flagG = False
-x0 = [-0.34427366  0.70786909 -1.6122173   1.45033593  4.07085006 -3.29719251
- 11.22919089 21.59835544]
-iter = 2400, funcVal = -0.9649501932847915, gradNorm = 0.002220323081159053, gA = [[-1.0430813e-06]], flagG = False
-x0 = [-0.34115763  0.70314007 -1.60372735  1.4459861   4.05892199 -3.30014843
- 11.24957788 21.64704739]
+<pre>iter = 3, funcVal = -0.7050034694241678, gradNorm = 0.0009264479308999578, gA = [[-5.5134296e-07]], flagG = True
+zero increment and gA =  tf.Tensor([[-5.5134296e-07]], shape=(1, 1), dtype=float32)
+Final number of iter = 3
+minF =  -0.7050034694241678
+xSol =  [-0.68239497  1.42505026 -2.35413402  1.49759785  5.0515799  -1.43662583
+  9.23955424 23.454697  ]
+--------------------Best Sol:
+xMin: [-0.68255733  1.42517055 -2.3540905   1.49743086  5.05154804 -1.43666896
+  9.23951811 23.45474659]
+fMin: -0.7050031901572686
+iter: 1
+gFnorm: 0.0011502541299800116
+gA: [[-3.6507845e-07]]
 </pre>
 </div>
 </div>
@@ -15040,7 +15005,7 @@ x0 = [-0.34115763  0.70314007 -1.60372735  1.4459861   4.05892199 -3.30014843
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-python"><pre><span></span><span class="err">!</span><span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="o">--</span><span class="n">to</span> <span class="n">html</span>  <span class="p">{</span><span class="n">wdir</span><span class="o">+</span><span class="s1">'nb24_aPolyNoptim.ipynb'</span><span class="p">}</span>
@@ -15066,7 +15031,7 @@ x0 = [-0.34115763  0.70314007 -1.60372735  1.4459861   4.05892199 -3.30014843
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>[NbConvertApp] Converting notebook /content/drive/MyDrive/ColabNtbs/ysNN_PolyN/batch104_zOptim/nb24_aPolyNoptim.ipynb to html
-[NbConvertApp] Writing 615304 bytes to /content/drive/MyDrive/ColabNtbs/ysNN_PolyN/batch104_zOptim/nb24_aPolyNoptim.html
+[NbConvertApp] Writing 621868 bytes to /content/drive/MyDrive/ColabNtbs/ysNN_PolyN/batch104_zOptim/nb24_aPolyNoptim.html
 </pre>
 </div>
 </div>

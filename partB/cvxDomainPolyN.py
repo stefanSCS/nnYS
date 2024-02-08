@@ -303,7 +303,7 @@ def fCostMatrx(vData,vMonoms,vFidx,vFcoeff):
     eps=1.0e-8
     #print(vData)
     for item in vData:
-        if(-eps<item[2]<eps or 0.5*np.pi-eps<item[2]<0.5*np.pi+eps):continue ##skip biaxial data (s0,r0,s90,r90)
+        #if(-eps<item[2]<eps or 0.5*np.pi-eps<item[2]<0.5*np.pi+eps):continue ##skip biaxial data (s0,r0,s90,r90)
         cphi,sphi=np.cos(item[2]),np.sin(item[2])
         cphi2,sphi2,csphi=cphi*cphi,sphi*sphi,cphi*sphi
         sx,sy,sxy=cphi2+item[1]*sphi2,sphi2+item[1]*cphi2,(1-item[1])*csphi
@@ -940,7 +940,8 @@ def constrOptim33CD(xZero,xCenter,fFunc,gradF,gFunc,gradG,fParam=[],gParam=[],dL
         if(kIter%100==0):
             print(f'iter = {kIter}, funcVal = {fA}, gradNorm = {normF}, gA = {gA}, flagG = {flagG}')
             print(f'x0 = {x0}')
-    if(not flagExit):print('reached max number of iterations in the constrained part of the algorithm')    
+    if(not flagExit):print('reached max number of iterations in the constrained part of the algorithm') 
+    print(f'Final number of iter = {kIter}')   
     return fF,x0,solMin
 
 
