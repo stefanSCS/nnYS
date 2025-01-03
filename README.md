@@ -6,7 +6,16 @@ Neural networks applied to the modeling of yield surfaces in metal plasticity.
 Repository for code and data supporting the article ***"On the use of neural networks in the modeling of yield surfaces"***   
 
 Preprint: [ResearchGate](https://www.researchgate.net/publication/371681181_On_the_use_of_neural_networks_in_the_modeling_of_yield_surfaces)  
-Final:
+Final: [Int J Numerical Methods Eng](http://dx.doi.org/10.1002/nme.7616)
+
+Updated the repo with 3D-stress UMAT's and parameter files: 
+### 3D 
+Contains an implememtation of Yld2004-18p in polynomial form, 
+and two examples of a single-layer HSC-NN implementation. 
+
+
+### **Note:** 
+The repo-structure outlined below is no longer alined with the published version.  
 
 There are four directories: **partA**,  **partB**, **partC** and **partD**.
 
